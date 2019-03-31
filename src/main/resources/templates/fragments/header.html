@@ -74,8 +74,8 @@
 				<div class="dropdown">
 					<a class=" dropdown-toggle" th:href="@{'/u/' + ${#authentication.name}}" data-toggle="dropdown"><span sec:authentication="name"></span></a>
 					<div class="dropdown-menu" >
-						<a class=" dropdown-item" href="/u/waylau" th:href="@{'/u/' + ${#authentication.name}}">个人主页</a> 
-						<a class="dropdown-item" href="/u/waylau/profile" th:href="@{'/u/' + ${#authentication.name}} + '/profile'" >个人设置</a>
+						<a class=" dropdown-item"  th:href="@{'/u/' + ${#authentication.name}}">个人主页</a>
+						<a class="dropdown-item"  th:href="@{'/u/' + ${#authentication.name}} + '/profile'" >个人设置</a>
 					</div>
 				</div>
  				<!--<div>-->
