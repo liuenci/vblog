@@ -2,8 +2,8 @@ package com.liuenci.vblog.service;
 
 import java.util.List;
 
-import com.liuenci.vblog.domain.Catalog;
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.Catalog;
+import com.liuenci.vblog.pojo.User;
 
 /**
  * Catalog 服务接口.

@@ -1,6 +1,6 @@
 package com.liuenci.vblog.service;
 
-import com.liuenci.vblog.domain.Comment;
+import com.liuenci.vblog.pojo.Comment;
 
 /**
  * Comment 服务接口.

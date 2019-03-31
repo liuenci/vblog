@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.User;
 
 /**
  * User 服务接口.

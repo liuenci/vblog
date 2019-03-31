@@ -7506,7 +7506,7 @@ hljs.registerLanguage('puppet', function (hljs) {
 
         built_in: /* core facts */
         'architecture augeasversion blockdevices boardmanufacturer boardproductname boardserialnumber cfkey dhcp_servers ' +
-        'domain ec2_ ec2_userdata facterversion filesystems ldom fqdn gid hardwareisa hardwaremodel hostname id|0 interfaces ' +
+        'pojo ec2_ ec2_userdata facterversion filesystems ldom fqdn gid hardwareisa hardwaremodel hostname id|0 interfaces ' +
         'ipaddress ipaddress_ ipaddress6 ipaddress6_ iphostnumber is_virtual kernel kernelmajversion kernelrelease kernelversion ' +
         'kernelrelease kernelversion lsbdistcodename lsbdistdescription lsbdistid lsbdistrelease lsbmajdistrelease lsbminordistrelease ' +
         'lsbrelease macaddress macaddress_ macosx_buildversion macosx_productname macosx_productversion macosx_productverson_major ' +
@@ -8583,7 +8583,7 @@ hljs.registerLanguage('sql', function (hljs) {
                 'datepart datetime2fromparts datetimeoffsetfromparts day dayname dayofmonth dayofweek dayofyear ' +
                 'deallocate declare decode default deferrable deferred degrees delayed delete des_decrypt ' +
                 'des_encrypt des_key_file desc describe descriptor diagnostics difference disconnect distinct ' +
-                'distinctrow div do domain double drop dumpfile each else elt enclosed encode encrypt end end-exec ' +
+                'distinctrow div do pojo double drop dumpfile each else elt enclosed encode encrypt end end-exec ' +
                 'engine engines eomonth errors escape escaped event eventdata events except exception exec execute ' +
                 'exists exp explain export_set extended external extract fast fetch field fields find_in_set ' +
                 'first first_value floor flush for force foreign format found found_rows from from_base64 ' +

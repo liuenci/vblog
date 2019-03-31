@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
-import com.liuenci.vblog.domain.Blog;
-import com.liuenci.vblog.domain.Catalog;
-import com.liuenci.vblog.domain.User;
-import com.liuenci.vblog.domain.Vote;
+import com.liuenci.vblog.pojo.Blog;
+import com.liuenci.vblog.pojo.Catalog;
+import com.liuenci.vblog.pojo.User;
+import com.liuenci.vblog.pojo.Vote;
 import com.liuenci.vblog.service.BlogService;
 import com.liuenci.vblog.service.CatalogService;
 import com.liuenci.vblog.service.UserService;
@@ -38,9 +38,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 用户主页空间控制器.
- * 
- * @since 1.0.0 2017年3月25日
- * @author <a href="https://waylau.com">Way Lau</a> 
  */
 @Controller
 @RequestMapping("/u")
@@ -76,8 +73,6 @@ public class UserspaceController {
 	/**
 	 * 保存个人设置
 	 * @param user
-	 * @param result
-	 * @param redirect
 	 * @return
 	 */
 	@PostMapping("/{username}/profile")
@@ -118,7 +113,6 @@ public class UserspaceController {
 	/**
 	 * 保存头像
 	 * @param username
-	 * @param model
 	 * @return
 	 */
 	@PostMapping("/{username}/avatar")
@@ -221,8 +215,6 @@ public class UserspaceController {
 	/**
 	 * 删除博客
 	 * @param id
-	 * @param model
-	 * @return
 	 */
 	@DeleteMapping("/{username}/blogs/{id}")
 	@PreAuthorize("authentication.name.equals(#username)") 

@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.liuenci.vblog.domain.Authority;
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.Authority;
+import com.liuenci.vblog.pojo.User;
 import com.liuenci.vblog.service.AuthorityService;
 import com.liuenci.vblog.service.UserService;
 import com.liuenci.vblog.util.ConstraintViolationExceptionHandler;
@@ -33,9 +33,7 @@ import com.liuenci.vblog.vo.Response;
 
 /**
  * 用户控制器.
- * 
- * @author <a href="https://waylau.com">Way Lau</a>
- * @date 2017年2月26日
+ * @author liuenci
  */
 @RestController
 @RequestMapping("/users")
@@ -70,7 +68,6 @@ public class UserController {
 
 	/**
 	 * 获取 form 表单页面
-	 * @param user
 	 * @return
 	 */
 	@GetMapping("/add")
@@ -82,8 +79,6 @@ public class UserController {
 	/**
 	 * 新建用户
 	 * @param user
-	 * @param result
-	 * @param redirect
 	 * @return
 	 */
 	@PostMapping
@@ -134,7 +129,6 @@ public class UserController {
 	
 	/**
 	 * 获取修改用户的界面，及数据
-	 * @param user
 	 * @return
 	 */
 	@GetMapping(value = "edit/{id}")

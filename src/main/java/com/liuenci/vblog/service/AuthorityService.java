@@ -1,6 +1,6 @@
 package com.liuenci.vblog.service;
 
-import com.liuenci.vblog.domain.Authority;
+import com.liuenci.vblog.pojo.Authority;
 
 /**
  * Authority 服务接口.

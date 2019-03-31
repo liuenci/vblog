@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.liuenci.vblog.domain.User;
-import com.liuenci.vblog.repository.UserRepository;
+import com.liuenci.vblog.pojo.User;
+import com.liuenci.vblog.dao.UserRepository;
 
 /**
  * User 服务.

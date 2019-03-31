@@ -7,8 +7,8 @@ import com.liuenci.vblog.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.liuenci.vblog.domain.Authority;
-import com.liuenci.vblog.repository.AuthorityRepository;
+import com.liuenci.vblog.pojo.Authority;
+import com.liuenci.vblog.dao.AuthorityRepository;
 
 /**
  * Authority 服务.

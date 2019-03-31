@@ -10,13 +10,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.liuenci.vblog.domain.Blog;
-import com.liuenci.vblog.domain.Catalog;
-import com.liuenci.vblog.domain.Comment;
-import com.liuenci.vblog.domain.User;
-import com.liuenci.vblog.domain.Vote;
-import com.liuenci.vblog.domain.EsBlog;
-import com.liuenci.vblog.repository.BlogRepository;
+import com.liuenci.vblog.pojo.Blog;
+import com.liuenci.vblog.pojo.Catalog;
+import com.liuenci.vblog.pojo.Comment;
+import com.liuenci.vblog.pojo.User;
+import com.liuenci.vblog.pojo.Vote;
+import com.liuenci.vblog.pojo.EsBlog;
+import com.liuenci.vblog.dao.BlogRepository;
 
 /**
  * Blog 服务.

@@ -1,11 +1,11 @@
 package com.liuenci.vblog.service;
 
-import com.liuenci.vblog.domain.Catalog;
+import com.liuenci.vblog.pojo.Catalog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.liuenci.vblog.domain.Blog;
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.Blog;
+import com.liuenci.vblog.pojo.User;
 
 /**
  * Blog 服务接口.

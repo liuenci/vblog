@@ -3,8 +3,8 @@ package com.liuenci.vblog.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.liuenci.vblog.domain.Authority;
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.Authority;
+import com.liuenci.vblog.pojo.User;
 import com.liuenci.vblog.service.AuthorityService;
 import com.liuenci.vblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,9 +72,8 @@ public class MainController {
 		userService.saveUser(user);
 		return "redirect:/login";
 	}
-	
-	@GetMapping("/search")
-	public String search() {
-		return "search";
+	@GetMapping("/logout")
+	public String logout(){
+		return "";
 	}
 }

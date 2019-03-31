@@ -6,9 +6,9 @@ import com.liuenci.vblog.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.liuenci.vblog.domain.Catalog;
-import com.liuenci.vblog.domain.User;
-import com.liuenci.vblog.repository.CatalogRepository;
+import com.liuenci.vblog.pojo.Catalog;
+import com.liuenci.vblog.pojo.User;
+import com.liuenci.vblog.dao.CatalogRepository;
 
 /**
  * Catalog 服务.

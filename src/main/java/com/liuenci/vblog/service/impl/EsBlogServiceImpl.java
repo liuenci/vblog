@@ -28,71 +28,74 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
-import com.liuenci.vblog.domain.User;
-import com.liuenci.vblog.domain.EsBlog;
-import com.liuenci.vblog.repository.EsBlogRepository;
+import com.liuenci.vblog.pojo.User;
+import com.liuenci.vblog.pojo.EsBlog;
+import com.liuenci.vblog.dao.EsBlogDao;
 import com.liuenci.vblog.vo.TagVO;
 
 /**
  * EsBlog 服务.
- * 
- * @since 1.0.0 2017年4月12日
- * @author <a href="https://waylau.com">Way Lau</a>
+ *
+ * @author liuenci
  */
 @Service
 public class EsBlogServiceImpl implements EsBlogService {
 	@Autowired
-	private EsBlogRepository esBlogRepository;
+	private EsBlogDao esBlogDao;
+
 	@Autowired
 	private ElasticsearchTemplate elasticsearchTemplate;
+
 	@Autowired
 	private UserService userService;
 	
 	private static final Pageable TOP_5_PAGEABLE = new PageRequest(0, 5);
+
 	private static final String EMPTY_KEYWORD = "";
-	/* (non-Javadoc)
-	 * @see EsBlogService#removeEsBlog(java.lang.String)
-	 */
+
+
 	@Override
 	public void removeEsBlog(String id) {
-		esBlogRepository.delete(id);
+		esBlogDao.delete(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see EsBlogService#updateEsBlog(EsBlog)
-	 */
+
 	@Override
 	public EsBlog updateEsBlog(EsBlog esBlog) {
-		return esBlogRepository.save(esBlog);
+		return esBlogDao.save(esBlog);
 	}
 
-	/* (non-Javadoc)
-	 * @see EsBlogService#getEsBlogByBlogId(java.lang.Long)
-	 */
+
 	@Override
 	public EsBlog getEsBlogByBlogId(Long blogId) {
-		return esBlogRepository.findByBlogId(blogId);
+		return esBlogDao.findByBlogId(blogId);
 	}
 
-	/* (non-Javadoc)
-	 * @see EsBlogService#listNewestEsBlogs(java.lang.String, org.springframework.data.domain.Pageable)
-	 */
+
 	@Override
 	public Page<EsBlog> listNewestEsBlogs(String keyword, Pageable pageable) throws SearchParseException {
-		Page<EsBlog> pages = null;
-		Sort sort = new Sort(Direction.DESC,"createTime"); 
+		Sort sort = new Sort(Direction.DESC,"createTime");
 		if (pageable.getSort() == null) {
 			pageable = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
 		}
- 
-		pages = esBlogRepository.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContainingOrTagsContaining(keyword,keyword,keyword,keyword, pageable);
- 
-		return pages;
+		return esBlogDao.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContainingOrTagsContaining(keyword,keyword,keyword,keyword, pageable);
 	}
 
-	/* (non-Javadoc)
-	 * @see EsBlogService#listHotestEsBlogs(java.lang.String, org.springframework.data.domain.Pageable)
-	 */
+	private final static String HOT = "hot";
+	private final static String NEW = "new";
+	@Override
+	public Page<EsBlog> listEsBlogsByType(String keyword, String type, Pageable pageable) {
+		Sort sort = null;
+		if (HOT.equals(type)) {
+			sort = new Sort(Direction.DESC, "readSize","commentSize","voteSize","createTime");
+		} else if (NEW.equals(type)){
+			sort = new Sort(Direction.DESC,"createTime");
+		}
+		pageable = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
+		return esBlogDao.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContainingOrTagsContaining(keyword,keyword,keyword,keyword,pageable);
+	}
+
+
 	@Override
 	public Page<EsBlog> listHotestEsBlogs(String keyword, Pageable pageable) throws SearchParseException{
  
@@ -101,18 +104,17 @@ public class EsBlogServiceImpl implements EsBlogService {
 			pageable = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
 		}
  
-		return esBlogRepository.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContainingOrTagsContaining(keyword, keyword, keyword, keyword, pageable);
+		return esBlogDao.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContainingOrTagsContaining(keyword, keyword, keyword, keyword, pageable);
 	}
 
 	@Override
 	public Page<EsBlog> listEsBlogs(Pageable pageable) {
-		return esBlogRepository.findAll(pageable);
+		return esBlogDao.findAll(pageable);
 	}
  
  
 	/**
 	 * 最新前5
-	 * @param keyword
 	 * @return
 	 */
 	@Override
@@ -123,7 +125,6 @@ public class EsBlogServiceImpl implements EsBlogService {
 	
 	/**
 	 * 最热前5
-	 * @param keyword
 	 * @return
 	 */
 	@Override

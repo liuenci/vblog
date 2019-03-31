@@ -3,7 +3,7 @@ package com.liuenci.vblog.vo;
 
 import java.io.Serializable;
 
-import com.liuenci.vblog.domain.Catalog;
+import com.liuenci.vblog.pojo.Catalog;
 
 public class CatalogVO implements Serializable {
  

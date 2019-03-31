@@ -6,13 +6,14 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.liuenci.vblog.domain.User;
-import com.liuenci.vblog.domain.EsBlog;
+import com.liuenci.vblog.pojo.User;
+import com.liuenci.vblog.pojo.EsBlog;
 import com.liuenci.vblog.vo.TagVO;
 
 /**
  * Blog 服务接口.
- * 
+ *
+ * @author liuenci
  */
 public interface EsBlogService {
  	
@@ -50,6 +51,16 @@ public interface EsBlogService {
 	 * @return
 	 */
 	Page<EsBlog> listHotestEsBlogs(String keyword, Pageable pageable);
+
+	/**
+	 * 重构
+	 * 最热博客、最新博客分页
+	 * @param keyword
+	 * @param type
+	 * @param pageable
+	 * @return
+	 */
+	Page<EsBlog> listEsBlogsByType(String keyword, String type, Pageable pageable);
 	
 	/**
 	 * 博客列表，分页

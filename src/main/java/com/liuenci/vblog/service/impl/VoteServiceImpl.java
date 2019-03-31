@@ -6,8 +6,8 @@ import com.liuenci.vblog.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.liuenci.vblog.domain.Vote;
-import com.liuenci.vblog.repository.VoteRepository;
+import com.liuenci.vblog.pojo.Vote;
+import com.liuenci.vblog.dao.VoteRepository;
 
 /**
  * Vote 服务.

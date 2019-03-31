@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
-import com.liuenci.vblog.domain.Blog;
-import com.liuenci.vblog.domain.Comment;
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.Blog;
+import com.liuenci.vblog.pojo.Comment;
+import com.liuenci.vblog.pojo.User;
 import com.liuenci.vblog.service.BlogService;
 import com.liuenci.vblog.service.CommentService;
 import com.liuenci.vblog.util.ConstraintViolationExceptionHandler;

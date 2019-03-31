@@ -1,6 +1,6 @@
 package com.liuenci.vblog.service;
 
-import com.liuenci.vblog.domain.Vote;
+import com.liuenci.vblog.pojo.Vote;
 
 /**
  * Vote 服务接口.

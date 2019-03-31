@@ -15,7 +15,6 @@ buildscript {
  
 	// 使用了 Maven 的中央仓库（你也可以指定其他仓库）
 	repositories {
-		//mavenCentral()
 		maven {
 			url 'http://maven.aliyun.com/nexus/content/groups/public/'
 		}
@@ -30,12 +29,11 @@ buildscript {
 
 // 使用插件
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 // 打包的类型为 jar，并指定了生成的打包的文件名称和版本
 jar {
-	baseName = 'blog-search'
+	baseName = 'vblog'
 	version = '1.0.0'
 }
 
@@ -44,7 +42,6 @@ sourceCompatibility = 1.8
 
 // 默认使用了 Maven 的中央仓库。这里改用自定义的镜像库
 repositories {
-	//mavenCentral()
 	maven {
 		url 'http://maven.aliyun.com/nexus/content/groups/public/'
 	}
@@ -53,41 +50,28 @@ repositories {
 // 依赖关系
 dependencies {
  
-	// 该依赖对于编译发行是必须的
 	compile('org.springframework.boot:spring-boot-starter-web')
  
-	// 添加 Thymeleaf 的依赖
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
-	// 添加  Spring Security 依赖
 	compile('org.springframework.boot:spring-boot-starter-security')
 	
-	// 添加 Spring Boot 开发工具依赖
- 	//compile("org.springframework.boot:spring-boot-devtools")
- 
-	// 添加 Spring Data JPA 的依赖
+
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	
-	// 添加 MySQL连接驱动 的依赖
 	compile('mysql:mysql-connector-java:6.0.5')
 	
-	// 添加   Thymeleaf Spring Security 依赖，与 Thymeleaf 版本一致都是 3.x
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE')
 	
-	// 添加  Apache Commons Lang 依赖
 	compile('org.apache.commons:commons-lang3:3.5')
 	
-	// 添加 Markdown parser 依赖
 	compile('es.nitaur.markdown:txtmark:0.16')
 	 
-	// 添加  Spring Data Elasticsearch 的依赖
 	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
 	
-	// 添加  JNA 的依赖
 	compile('net.java.dev.jna:jna:4.3.0')
 	
-	// 该依赖对于编译测试是必须的，默认包含编译产品依赖和编译时依
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	
+
 
 }

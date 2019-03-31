@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.User;
 import com.liuenci.vblog.service.BlogService;
 import com.liuenci.vblog.service.VoteService;
 import com.liuenci.vblog.util.ConstraintViolationExceptionHandler;
@@ -38,7 +38,6 @@ public class VoteController {
 	/**
 	 * 发表点赞
 	 * @param blogId
-	 * @param VoteContent
 	 * @return
 	 */
 	@PostMapping

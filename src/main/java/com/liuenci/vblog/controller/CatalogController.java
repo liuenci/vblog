@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
-import com.liuenci.vblog.domain.Catalog;
-import com.liuenci.vblog.domain.User;
+import com.liuenci.vblog.pojo.Catalog;
+import com.liuenci.vblog.pojo.User;
 import com.liuenci.vblog.service.CatalogService;
 import com.liuenci.vblog.util.ConstraintViolationExceptionHandler;
 import com.liuenci.vblog.vo.CatalogVO;
@@ -28,9 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 分类 控制器.
- * 
- * @since 1.0.0 2017年4月10日
- * @author <a href="https://waylau.com">Way Lau</a> 
  */
 @Controller
 @RequestMapping("/catalogs")
@@ -69,8 +66,6 @@ public class CatalogController {
 	}
 	/**
 	 * 发表分类
-	 * @param blogId
-	 * @param commentContent
 	 * @return
 	 */
 	@PostMapping
