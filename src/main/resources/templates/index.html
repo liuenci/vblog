@@ -46,8 +46,9 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="col-lg-12" >
-                                <a th:each="tag, tagStat : ${tags}" th:object="${tag}" href="/blogs?keyword=1" th:href="'/blogs?keyword=' +  *{name}"> <span class="badge" 
-                                th:classappend="${tagStat.index} eq 0 ? 'badge-danger': (${tagStat.index} eq 1 ? 'badge-warning':(${tagStat.index} eq 2 ? 'badge-info':'badge-default'))"th:text="*{name}">Web Design</span></a>
+                                <a th:each="tag, tagStat : ${tags}" th:object="${tag}" th:href="'/blogs?keyword=' +  *{name}">
+                                    <span class="badge" th:classappend="${tagStat.index} eq 0 ? 'badge-danger': (${tagStat.index} eq 1 ? 'badge-warning':(${tagStat.index} eq 2 ? 'badge-info':'badge-default'))"th:text="*{name}"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -60,8 +61,8 @@
                         <div class="row">
                             <div class="col-lg-12">
 								<span th:each="user: ${users}" th:object="${user}">
-				                  <a href="/u/waylau" th:href="'/u/' + *{username}" title="waylau" th:title="*{username}">
-				                    <img src="/images/avatar-defualt.jpg" th:src="*{avatar} == null ? '/images/avatar-defualt.jpg' : *{avatar}" class="blog-avatar-50">
+				                  <a th:href="'/u/' + *{username}" th:title="*{username}">
+				                    <img th:src="*{avatar} == null ? '/images/avatar-defualt.jpg' : *{avatar}" class="blog-avatar-50">
 				                  </a>
 				                </span>
                             </div>
@@ -74,8 +75,8 @@
                     <h5 class="card-header"><i class="fa fa-fire" aria-hidden="true"></i> 热门文章</h5>
 
                     <ul class="list-group" th:each="hotblog , hotblogStat : ${hotest}" th:object="${hotblog}">
-                        <a  th:href="'/u/'+*{username} +'/blogs/'+ *{blogId}" class="list-group-item">
-                            [[*{title}]]<span class="badge badge-pill" th:classappend="${hotblogStat.index} eq 0 ? 'badge-danger': (${hotblogStat.index} eq 1 ? 'badge-warning':(${hotblogStat.index} eq 2 ? 'badge-info':'badge-default'))">[[*{readSize}]]</span>
+                        <a  th:href="'/u/'+*{username} +'/blogs/'+ *{blogId}" class="list-group-item" th:text="*{title}">
+                            <span class="badge badge-pill" th:classappend="${hotblogStat.index} eq 0 ? 'badge-danger': (${hotblogStat.index} eq 1 ? 'badge-warning':(${hotblogStat.index} eq 2 ? 'badge-info':'badge-default'))">[[*{readSize}]]</span>
                         </a>
                     </ul>
 

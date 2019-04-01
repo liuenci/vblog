@@ -1,21 +1,3 @@
-/*!
- * 页面目录生成器.
- * 
-比如，我们有如下代码：
-
-<article class="abc">
-	<h1>OAuth 1.0 的认证流程</h1>
-	<h2>OAuth 2.0 的认证流程</h2>
-	<h3>OAuth 3.0 的认证流程</h3>
-</article>
-<div id="catalog"></div>
-
-要生成目录，按如下方式初始化：
-$.catalog("#catalog", ".abc");
-
- * @since: 1.0.0 2017-03-26
- * @author Way Lau <https://waylau.com>
- */
 (function($) {
 	
 	"use strict";

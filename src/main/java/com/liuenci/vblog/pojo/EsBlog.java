@@ -12,6 +12,9 @@ import org.springframework.data.elasticsearch.annotations.FieldIndex;
 
 /**
  * ES 建立索引使用
+ * index -> DB
+ * type -> Table
+ * Document -> row
  */
 @Document(indexName = "blog", type = "blog")
 /**
@@ -28,7 +31,7 @@ public class EsBlog implements Serializable {
 	@Id
 	private String id;
 	/**
-	 * Blog 的 id 做全文检索字段
+	 * Blog 的 id 不做全文检索字段
 	 */
 	@Field(index = FieldIndex.not_analyzed)    
 	private Long blogId;

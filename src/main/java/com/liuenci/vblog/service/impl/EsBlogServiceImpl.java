@@ -137,23 +137,26 @@ public class EsBlogServiceImpl implements EsBlogService {
 	public List<TagVO> listTop30Tags() {
  
 		List<TagVO> list = new ArrayList<>();
-		// given
+		// 构造查询条件
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
+				// 设置查询所有
 				.withQuery(matchAllQuery())
+				// 制定索引的类型，只先从各分片中查询匹配的文档
 				.withSearchType(SearchType.QUERY_THEN_FETCH)
+				// 制定查询的索引库的名称 -> indexName 和类型 -> type
 				.withIndices("blog").withTypes("blog")
+				// 聚合查询 计算 tag 标签出现的次数，降序排列 取前三十个
 				.addAggregation(terms("tags").field("tags").order(Terms.Order.count(false)).size(30))
 				.build();
-		// when
 		Aggregations aggregations = elasticsearchTemplate.query(searchQuery, new ResultsExtractor<Aggregations>() {
 			@Override
 			public Aggregations extract(SearchResponse response) {
 				return response.getAggregations();
 			}
 		});
-		
-		StringTerms modelTerms =  (StringTerms)aggregations.asMap().get("tags"); 
-	        
+		// 转化为 map 集合再取值
+		StringTerms modelTerms =  (StringTerms)aggregations.asMap().get("tags");
+		// 获取所有的 bucket
         Iterator<Bucket> modelBucketIt = modelTerms.getBuckets().iterator();
         while (modelBucketIt.hasNext()) {
             Bucket actiontypeBucket = modelBucketIt.next();
@@ -168,14 +171,12 @@ public class EsBlogServiceImpl implements EsBlogService {
 	public List<User> listTop12Users() {
  
 		List<String> usernamelist = new ArrayList<>();
-		// given
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
 				.withQuery(matchAllQuery())
 				.withSearchType(SearchType.QUERY_THEN_FETCH)
 				.withIndices("blog").withTypes("blog")
 				.addAggregation(terms("users").field("username").order(Terms.Order.count(false)).size(12))
 				.build();
-		// when
 		Aggregations aggregations = elasticsearchTemplate.query(searchQuery, new ResultsExtractor<Aggregations>() {
 			@Override
 			public Aggregations extract(SearchResponse response) {

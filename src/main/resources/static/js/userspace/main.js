@@ -1,9 +1,3 @@
-/*!
- * Avatar JS.
- * 
- * @since: 1.0.0 2017/4/6
- * @author Way Lau <https://waylau.com>
- */
 "use strict";
 //# sourceURL=main.js
  
