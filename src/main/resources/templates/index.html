@@ -10,31 +10,38 @@
         <div class="col-md-8">
             <div id="mainContainer">
                 <div id="mainContainerRepleace">
-		            <div class="card mb-4" th:each="blog : ${blogList}">
-		                <div class="card-block">
-		                 	<h2 class="card-title">
+                    <div class="card mb-4" th:each="blog : ${blogList}">
+                        <div class="card-block">
+                            <h2 class="card-title">
 		                 		<span>
-				                  <a th:href="'/u/' + ${blog.username}"  th:title="${blog.username}">
-				                    <img src="/images/avatar-defualt.jpg" th:src="${blog.avatar} == null ? '/images/avatar-defualt.jpg' : ${blog.avatar}"  class="blog-avatar-50">
+				                  <a th:href="'/u/' + ${blog.username}" th:title="${blog.username}">
+				                    <img src="/images/avatar-defualt.jpg"
+                                         th:src="${blog.avatar} == null ? '/images/avatar-defualt.jpg' : ${blog.avatar}"
+                                         class="blog-avatar-50">
 				                  </a>
 						        </span>
-		                        <a class="card-link"
-		                        	th:href="'/u/' + ${blog.username} + '/blogs/'+ ${blog.blogId}"  th:title="${blog.title}" th:text="${blog.title}">
-		                        </a>
-		                    </h2>
-		                    <p class="card-text" th:text="${blog.summary}"></p>
-		                    <div class="card-text">
-		                        <a th:href="'/u/' + ${blog.username}" class="card-link" th:text=${blog.username}></a> 发表于 [[${#dates.format(blog.createTime, 'yyyy-MM-dd HH:mm')}]] <i class="fa fa-eye" aria-hidden="true" th:text="${blog.readSize}"></i>
-		                        <i class="fa fa-heart-o" aria-hidden="true">[[${blog.voteSize}]]</i> <i class="fa fa-comment-o"
-		                                                                              aria-hidden="true">[[${blog.commentSize}]]</i>
-		                    </div>
-		                </div>
-		            </div>
-	 
-		            <div th:replace="~{fragments/page :: page}">...</div>
-	            </div>
+                                <a class="card-link"
+                                   th:href="'/u/' + ${blog.username} + '/blogs/'+ ${blog.blogId}"
+                                   th:title="${blog.title}" th:text="${blog.title}">
+                                </a>
+                            </h2>
+                            <p class="card-text" th:text="${blog.summary}"></p>
+                            <div class="card-text">
+                                <a th:href="'/u/' + ${blog.username}" class="card-link" th:text=${blog.username}></a>
+                                发表于 [[${#dates.format(blog.createTime, 'yyyy-MM-dd HH:mm')}]] <i class="fa fa-eye"
+                                                                                                 aria-hidden="true"
+                                                                                                 th:text="${blog.readSize}"></i>
+                                <i class="fa fa-heart-o" aria-hidden="true">[[${blog.voteSize}]]</i> <i
+                                    class="fa fa-comment-o"
+                                    aria-hidden="true">[[${blog.commentSize}]]</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div th:replace="~{fragments/page :: page}">...</div>
+                </div>
             </div>
- 
+
         </div>
 
         <!-- 右侧栏目 -->
@@ -45,9 +52,12 @@
                     <h5 class="card-header"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</h5>
                     <div class="card-block">
                         <div class="row">
-                            <div class="col-lg-12" >
-                                <a th:each="tag, tagStat : ${tags}" th:object="${tag}" th:href="'/blogs?keyword=' +  *{name}">
-                                    <span class="badge" th:classappend="${tagStat.index} eq 0 ? 'badge-danger': (${tagStat.index} eq 1 ? 'badge-warning':(${tagStat.index} eq 2 ? 'badge-info':'badge-default'))"th:text="*{name}"></span>
+                            <div class="col-lg-12">
+                                <a th:each="tag, tagStat : ${tags}" th:object="${tag}"
+                                   th:href="'/blogs?keyword=' +  *{name}">
+                                    <span class="badge"
+                                          th:classappend="${tagStat.index} eq 0 ? 'badge-danger': (${tagStat.index} eq 1 ? 'badge-warning':(${tagStat.index} eq 2 ? 'badge-info':'badge-default'))"
+                                          th:text="*{name}"></span>
                                 </a>
                             </div>
                         </div>
@@ -62,7 +72,8 @@
                             <div class="col-lg-12">
 								<span th:each="user: ${users}" th:object="${user}">
 				                  <a th:href="'/u/' + *{username}" th:title="*{username}">
-				                    <img th:src="*{avatar} == null ? '/images/avatar-defualt.jpg' : *{avatar}" class="blog-avatar-50">
+				                    <img th:src="*{avatar} == null ? '/images/avatar-defualt.jpg' : *{avatar}"
+                                         class="blog-avatar-50">
 				                  </a>
 				                </span>
                             </div>
@@ -75,8 +86,9 @@
                     <h5 class="card-header"><i class="fa fa-fire" aria-hidden="true"></i> 热门文章</h5>
 
                     <ul class="list-group" th:each="hotblog , hotblogStat : ${hotest}" th:object="${hotblog}">
-                        <a  th:href="'/u/'+*{username} +'/blogs/'+ *{blogId}" class="list-group-item" th:text="*{title}">
-                            <span class="badge badge-pill" th:classappend="${hotblogStat.index} eq 0 ? 'badge-danger': (${hotblogStat.index} eq 1 ? 'badge-warning':(${hotblogStat.index} eq 2 ? 'badge-info':'badge-default'))">[[*{readSize}]]</span>
+                        <a th:href="'/u/'+*{username} +'/blogs/'+ *{blogId}" class="list-group-item" th:text="*{title}">
+                            <span class="badge badge-pill"
+                                  th:classappend="${hotblogStat.index} eq 0 ? 'badge-danger': (${hotblogStat.index} eq 1 ? 'badge-warning':(${hotblogStat.index} eq 2 ? 'badge-info':'badge-default'))">[[*{readSize}]]</span>
                         </a>
                     </ul>
 
@@ -87,9 +99,9 @@
                     <h5 class="card-header"><i class="fa fa-line-chart" aria-hidden="true"></i> 最新发布</h5>
                     <div class="list-group">
                         <ul class="list-group" th:each="newblog : ${newest}" th:object="${newblog}">
-                        <a  th:href="'/u/'+*{username} +'/blogs/'+ *{blogId}" class="list-group-item" th:text="*{title}">
-                        </a>
- 
+                            <a th:href="'/u/'+*{username} +'/blogs/'+ *{blogId}" class="list-group-item"
+                               th:text="*{title}">
+                            </a>
                         </ul>
                     </div>
 
@@ -99,6 +111,6 @@
     </div>
 </div>
 <div th:replace="~{fragments/footer :: footer}">...</div>
-<script src="../../js/index.js" th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>

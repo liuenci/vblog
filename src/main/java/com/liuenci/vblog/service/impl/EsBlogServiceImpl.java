@@ -184,9 +184,9 @@ public class EsBlogServiceImpl implements EsBlogService {
 			}
 		});
 		
-		StringTerms modelTerms =  (StringTerms)aggregations.asMap().get("users"); 
-	        
-        Iterator<Bucket> modelBucketIt = modelTerms.getBuckets().iterator();
+		StringTerms modelTerms =  (StringTerms)aggregations.asMap().get("users");
+
+		Iterator<Bucket> modelBucketIt = modelTerms.getBuckets().iterator();
         while (modelBucketIt.hasNext()) {
             Bucket actiontypeBucket = modelBucketIt.next();
             String username = actiontypeBucket.getKey().toString();
