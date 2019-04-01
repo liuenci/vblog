@@ -27,9 +27,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * User 实体
- * 
- * @since 1.0.0 2017年3月5日
- * @author <a href="https://waylau.com">Way Lau</a>
  */
 @Entity // 实体
 public class User implements UserDetails, Serializable {
