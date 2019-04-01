@@ -81,9 +81,6 @@
                     <div class="dropdown-menu">
                         <a class=" dropdown-item" th:href="@{'/u/' + ${#authentication.name}}">个人主页</a>
                         <a class="dropdown-item" th:href="@{'/u/' + ${#authentication.name}} + '/profile'">个人设置</a>
-                        <form action="/logout" th:action="@{/logout}" method="post">
-                            <input class="btn btn-outline-success " type="submit" value="退出">
-                        </form>
                     </div>
                 </div>
             </div>

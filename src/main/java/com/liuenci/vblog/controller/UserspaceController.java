@@ -38,6 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 用户主页空间控制器.
+ * @author liuenci
  */
 @Controller
 @RequestMapping("/u")
@@ -141,17 +142,19 @@ public class UserspaceController {
 		User  user = (User)userDetailsService.loadUserByUsername(username);
  		
 		Page<Blog> page = null;
-		
-		if (catalogId != null && catalogId > 0) { // 分类查询
+		// 分类查询
+		if (catalogId != null && catalogId > 0) {
 			Catalog catalog = catalogService.getCatalogById(catalogId);
 			Pageable pageable = new PageRequest(pageIndex, pageSize);
 			page = blogService.listBlogsByCatalog(catalog, pageable);
 			order = "";
-		} else if (order.equals("hot")) { // 最热查询
+		// 最热查询
+		} else if (order.equals("hot")) {
 			Sort sort = new Sort(Direction.DESC,"readSize","commentSize","voteSize"); 
 			Pageable pageable = new PageRequest(pageIndex, pageSize, sort);
 			page = blogService.listBlogsByTitleVoteAndSort(user, keyword, pageable);
-		} else if (order.equals("new")) { // 最新查询
+		// 最新查询
+		} else if (order.equals("new")) {
 			Pageable pageable = new PageRequest(pageIndex, pageSize);
 			page = blogService.listBlogsByTitleVote(user, keyword, pageable);
 		}
