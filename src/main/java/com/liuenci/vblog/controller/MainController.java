@@ -33,7 +33,7 @@ public class MainController {
 		return "redirect:/index";
 	}
 	
-	@GetMapping("/index")
+	@GetMapping("index")
 	public String index() {
 		return "redirect:/blogs";
 	}
@@ -42,19 +42,19 @@ public class MainController {
 	 * 获取登录界面
 	 * @return
 	 */
-	@GetMapping("/login")
+	@GetMapping("login")
 	public String login() {
 		return "login";
 	}
 
-	@GetMapping("/login-error")
+	@GetMapping("login-error")
 	public String loginError(Model model) {
 		model.addAttribute("loginError", true);
 		model.addAttribute("errorMsg", "登陆失败，账号或者密码错误！");
 		return "login";
 	}
 	
-	@GetMapping("/register")
+	@GetMapping("register")
 	public String register() {
 		return "register";
 	}
@@ -64,16 +64,12 @@ public class MainController {
 	 * @param user
 	 * @return
 	 */
-	@PostMapping("/register")
+	@PostMapping("register")
 	public String registerUser(User user) {
 		List<Authority> authorities = new ArrayList<>();
 		authorities.add(authorityService.getAuthorityById(ROLE_USER_AUTHORITY_ID));
 		user.setAuthorities(authorities);
 		userService.saveUser(user);
 		return "redirect:/login";
-	}
-	@GetMapping("/logout")
-	public String logout(){
-		return "";
 	}
 }

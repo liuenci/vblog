@@ -3,10 +3,8 @@ package com.liuenci.vblog.vo;
 import java.io.Serializable;
 
 /**
- * 菜单 值对象.
- * 
- * @since 1.0.0 2017年3月30日
- * @author <a href="https://waylau.com">Way Lau</a> 
+ * 菜单 值对象
+ * @author liuenci
  */
 public class Menu implements Serializable{
  

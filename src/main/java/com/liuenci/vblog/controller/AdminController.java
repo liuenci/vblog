@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.liuenci.vblog.vo.Menu;
 
 @Controller
-@RequestMapping("/admins")
+@RequestMapping("admins")
 public class AdminController {
 
 	/**

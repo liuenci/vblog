@@ -5,33 +5,35 @@ import java.io.Serializable;
 
 /**
  * Tag 值对象.
+ *
+ * @author liuenci
  */
 public class TagVO implements Serializable {
- 
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private Long count;
-	
-	public TagVO(String name, Long count) {
-		this.name = name;
-		this.count = count;
-	}
 
-	public String getName() {
-		return name;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String name;
+    private Long count;
 
-	public Long getCount() {
-		return count;
-	}
+    public TagVO(String name, Long count) {
+        this.name = name;
+        this.count = count;
+    }
 
-	public void setCount(Long count) {
-		this.count = count;
-	}
- 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
+    }
+
 }

@@ -7,7 +7,8 @@ import com.liuenci.vblog.pojo.User;
 
 /**
  * Catalog 服务接口.
- * 
+ *
+ * @author liuenci
  */
 public interface CatalogService {
 	/**

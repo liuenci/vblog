@@ -28,13 +28,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * User 实体
  */
-@Entity // 实体
+@Entity
 public class User implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id // 主键
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 用户的唯一标识
 
     @NotEmpty(message = "姓名不能为空")

@@ -5,6 +5,9 @@ import java.io.Serializable;
 
 import com.liuenci.vblog.pojo.Catalog;
 
+/**
+ * @author liuenci
+ */
 public class CatalogVO implements Serializable {
  
 	private static final long serialVersionUID = 1L;

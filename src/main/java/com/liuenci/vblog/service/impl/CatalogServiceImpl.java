@@ -11,10 +11,8 @@ import com.liuenci.vblog.pojo.User;
 import com.liuenci.vblog.dao.CatalogRepository;
 
 /**
- * Catalog 服务.
- * 
- * @since 1.0.0 2017年4月10日
- * @author <a href="https://waylau.com">Way Lau</a>
+ * Catalog 服务
+ * @author liuenci
  */
 @Service
 public class CatalogServiceImpl implements CatalogService {

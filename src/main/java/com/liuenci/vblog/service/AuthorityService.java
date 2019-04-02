@@ -4,6 +4,7 @@ import com.liuenci.vblog.pojo.Authority;
 
 /**
  * Authority 服务接口.
+ * @author liuenci
  */
 public interface AuthorityService {
 	 

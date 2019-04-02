@@ -19,9 +19,6 @@ import com.liuenci.vblog.dao.UserRepository;
 
 /**
  * User 服务.
- * 
- * @since 1.0.0 2017年3月18日
- * @author <a href="https://waylau.com">Way Lau</a>
  */
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {

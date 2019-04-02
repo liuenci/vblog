@@ -56,14 +56,14 @@ public class UserspaceController {
 	private CatalogService catalogService;
 	
 	
-	@GetMapping("/{username}")
+	@GetMapping("{username}")
 	public String userSpace(@PathVariable("username") String username, Model model) {
 		User user = (User)userDetailsService.loadUserByUsername(username);
 		model.addAttribute("user", user);
 		return "redirect:/u/" + username + "/blogs";
 	}
  
-	@GetMapping("/{username}/profile")
+	@GetMapping("{username}/profile")
 	@PreAuthorize("authentication.name.equals(#username)") 
 	public ModelAndView profile(@PathVariable("username") String username, Model model) {
 		User  user = (User)userDetailsService.loadUserByUsername(username);
@@ -76,7 +76,7 @@ public class UserspaceController {
 	 * @param user
 	 * @return
 	 */
-	@PostMapping("/{username}/profile")
+	@PostMapping("{username}/profile")
 	@PreAuthorize("authentication.name.equals(#username)") 
 	public String saveProfile(@PathVariable("username") String username,User user) {
 		User originalUser = userService.getUserById(user.getId());
@@ -102,7 +102,7 @@ public class UserspaceController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/{username}/avatar")
+	@GetMapping("{username}/avatar")
 	@PreAuthorize("authentication.name.equals(#username)") 
 	public ModelAndView avatar(@PathVariable("username") String username, Model model) {
 		User  user = (User)userDetailsService.loadUserByUsername(username);
@@ -116,7 +116,7 @@ public class UserspaceController {
 	 * @param username
 	 * @return
 	 */
-	@PostMapping("/{username}/avatar")
+	@PostMapping("{username}/avatar")
 	@PreAuthorize("authentication.name.equals(#username)") 
 	public ResponseEntity<Response> saveAvatar(@PathVariable("username") String username, @RequestBody User user) {
 		String avatarUrl = user.getAvatar();
@@ -129,7 +129,7 @@ public class UserspaceController {
 	}
 	
 	
-	@GetMapping("/{username}/blogs")
+	@GetMapping("{username}/blogs")
 	public String listBlogsByOrder(@PathVariable("username") String username,
 			@RequestParam(value="order",required=false,defaultValue="new") String order,
 			@RequestParam(value="catalog",required=false ) Long catalogId,
@@ -158,9 +158,9 @@ public class UserspaceController {
 			Pageable pageable = new PageRequest(pageIndex, pageSize);
 			page = blogService.listBlogsByTitleVote(user, keyword, pageable);
 		}
- 
-		
-		List<Blog> list = page.getContent();	// 当前所在页面数据列表
+
+		// 当前所在页面数据列表
+		List<Blog> list = page.getContent();
 		
 		model.addAttribute("user", user);
 		model.addAttribute("order", order);
@@ -177,7 +177,7 @@ public class UserspaceController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/{username}/blogs/{id}")
+	@GetMapping("{username}/blogs/{id}")
 	public String getBlogById(@PathVariable("username") String username,@PathVariable("id") Long id, Model model) {
 		User principal = null;
 		Blog blog = blogService.getBlogById(id);
@@ -197,7 +197,8 @@ public class UserspaceController {
 		
 		// 判断操作用户的点赞情况
 		List<Vote> votes = blog.getVotes();
-		Vote currentVote = null; // 当前用户的点赞情况
+		// 当前用户的点赞情况
+		Vote currentVote = null;
 		
 		if (principal !=null) {
 			for (Vote vote : votes) {
@@ -238,7 +239,7 @@ public class UserspaceController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/{username}/blogs/edit")
+	@GetMapping("{username}/blogs/edit")
 	public ModelAndView createBlog(@PathVariable("username") String username, Model model) {
 		User user = (User)userDetailsService.loadUserByUsername(username);
 		List<Catalog> catalogs = catalogService.listCatalogs(user);
@@ -253,7 +254,7 @@ public class UserspaceController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/{username}/blogs/edit/{id}")
+	@GetMapping("{username}/blogs/edit/{id}")
 	public ModelAndView editBlog(@PathVariable("username") String username, @PathVariable("id") Long id, Model model) {
 		// 获取用户分类列表
 		User user = (User)userDetailsService.loadUserByUsername(username);
@@ -270,7 +271,7 @@ public class UserspaceController {
 	 * @param blog
 	 * @return
 	 */
-	@PostMapping("/{username}/blogs/edit")
+	@PostMapping("{username}/blogs/edit")
 	@PreAuthorize("authentication.name.equals(#username)") 
 	public ResponseEntity<Response> saveBlog(@PathVariable("username") String username, @RequestBody Blog blog) {
 		// 对 Catalog 进行空处理

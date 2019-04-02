@@ -21,9 +21,6 @@ import com.liuenci.vblog.vo.Response;
 
 /**
  * 点赞控制器.
- * 
- * @since 1.0.0 2017年3月8日
- * @author <a href="https://waylau.com">Way Lau</a> 
  */
 @Controller
 @RequestMapping("/votes")
@@ -37,11 +34,12 @@ public class VoteController {
  
 	/**
 	 * 发表点赞
+	 * 指定角色权限才能操作方法
 	 * @param blogId
 	 * @return
 	 */
 	@PostMapping
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")  // 指定角色权限才能操作方法
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Response> createVote(Long blogId) {
  
 		try {
@@ -57,10 +55,11 @@ public class VoteController {
 	
 	/**
 	 * 删除点赞
+	 * 指定角色权限才能操作方法
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")  // 指定角色权限才能操作方法
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Response> delete(@PathVariable("id") Long id, Long blogId) {
 		
 		boolean isOwner = false;

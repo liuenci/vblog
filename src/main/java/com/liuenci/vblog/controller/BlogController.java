@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 主页控制器
  */
 @Controller
-@RequestMapping("/blogs")
+@RequestMapping("blogs")
 public class BlogController {
 
     @Autowired
@@ -54,17 +54,6 @@ public class BlogController {
         // 系统初始化时，没有博客数据
         boolean isEmpty = true;
         try {
-//            // 最热查询
-//            if (HOT.equals(order)) {
-//                Sort sort = new Sort(Direction.DESC, "readSize", "commentSize", "voteSize", "createTime");
-//                Pageable pageable = new PageRequest(pageIndex, pageSize, sort);
-//                page = esBlogService.listHotestEsBlogs(keyword, pageable);
-//            // 最新查询
-//            } else if (order.equals("new")) {
-//                Sort sort = new Sort(Direction.DESC, "createTime");
-//                Pageable pageable = new PageRequest(pageIndex, pageSize, sort);
-//                page = esBlogService.listNewestEsBlogs(keyword, pageable);
-//            }
             Pageable pageable = new PageRequest(pageIndex, pageSize);
             page = esBlogService.listEsBlogsByType(keyword, order, pageable);
             isEmpty = false;
@@ -98,14 +87,14 @@ public class BlogController {
         return (async == true ? "/index :: #mainContainerRepleace" : "/index");
     }
 
-    @GetMapping("/newest")
+    @GetMapping("newest")
     public String listNewestEsBlogs(Model model) {
         List<EsBlog> newest = esBlogService.listTop5NewestEsBlogs();
         model.addAttribute("newest", newest);
         return "newest";
     }
 
-    @GetMapping("/hotest")
+    @GetMapping("hotest")
     public String listHotestEsBlogs(Model model) {
         List<EsBlog> hotest = esBlogService.listTop5HotestEsBlogs();
         model.addAttribute("hotest", hotest);

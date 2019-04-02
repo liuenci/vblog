@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Catalog 仓库.
+ * @author liuenci
  */
 public interface CatalogRepository extends JpaRepository<Catalog, Long>{
 	

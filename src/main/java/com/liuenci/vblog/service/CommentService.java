@@ -4,7 +4,8 @@ import com.liuenci.vblog.pojo.Comment;
 
 /**
  * Comment 服务接口.
- * 
+ *
+ * @author liuenci
  */
 public interface CommentService {
 	/**

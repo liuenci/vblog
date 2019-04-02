@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Blog 仓库.
+ * @author liuenci
  */
 public interface BlogRepository extends JpaRepository<Blog, Long>{
 	/**

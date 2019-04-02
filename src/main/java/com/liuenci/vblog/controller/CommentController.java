@@ -27,12 +27,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 评论 控制器.
- * 
- * @since 1.0.0 2017年3月8日
- * @author <a href="https://waylau.com">Way Lau</a> 
+ * @author liuenci
  */
 @Controller
-@RequestMapping("/comments")
+@RequestMapping("comments")
 public class CommentController {
 	
 	@Autowired
@@ -68,12 +66,13 @@ public class CommentController {
 	}
 	/**
 	 * 发表评论
+	 * 指定角色权限才能操作方法
 	 * @param blogId
 	 * @param commentContent
 	 * @return
 	 */
 	@PostMapping
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")  // 指定角色权限才能操作方法
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Response> createComment(Long blogId, String commentContent) {
  
 		try {
@@ -89,10 +88,11 @@ public class CommentController {
 	
 	/**
 	 * 删除评论
+	 * 指定角色权限才能操作方法
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")  // 指定角色权限才能操作方法
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Response> delete(@PathVariable("id") Long id, Long blogId) {
 		
 		boolean isOwner = false;

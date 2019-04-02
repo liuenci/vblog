@@ -18,13 +18,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Comment 实体
+ * @author liuenci
  */
-@Entity // 实体
+@Entity
 public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id // 主键
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // 用户的唯一标识
 
 	@NotEmpty(message = "评论内容不能为空")

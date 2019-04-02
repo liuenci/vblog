@@ -9,18 +9,19 @@ import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
- * 权限
+ * 权限实体
+ * @author liuenci
  */
-@Entity // 实体
+@Entity
 public class Authority implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id // 主键
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
-	private Long id; // 用户的唯一标识
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	@Column(nullable = false) // 映射为字段，值不能为空
+	@Column(nullable = false)
 	private String name;
 
 	public Long getId() {
@@ -31,11 +32,6 @@ public class Authority implements GrantedAuthority {
 		this.id = id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.security.core.GrantedAuthority#getAuthority()
-	 */
 	@Override
 	public String getAuthority() {
 		return name;

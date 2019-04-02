@@ -11,23 +11,25 @@ import com.liuenci.vblog.dao.VoteRepository;
 
 /**
  * Vote 服务.
- * 
+ *
+ * @author liuenci
  */
 @Service
 public class VoteServiceImpl implements VoteService {
 
-	@Autowired
-	private VoteRepository voteRepository;
+    @Autowired
+    private VoteRepository voteRepository;
 
 
-	@Override
-	@Transactional
-	public void removeVote(Long id) {
-		voteRepository.delete(id);
-	}
-	@Override
-	public Vote getVoteById(Long id) {
-		return voteRepository.findOne(id);
-	}
+    @Override
+    @Transactional
+    public void removeVote(Long id) {
+        voteRepository.delete(id);
+    }
+
+    @Override
+    public Vote getVoteById(Long id) {
+        return voteRepository.findOne(id);
+    }
 
 }

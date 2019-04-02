@@ -70,11 +70,11 @@ public class CatalogController {
 
     /**
      * 发表分类
-     *
+     * 指定用户才能操作方法
      * @return
      */
     @PostMapping
-    @PreAuthorize("authentication.name.equals(#catalogVO.username)")// 指定用户才能操作方法
+    @PreAuthorize("authentication.name.equals(#catalogVO.username)")
     public ResponseEntity<Response> create(@RequestBody CatalogVO catalogVO) {
 
         String username = catalogVO.getUsername();
@@ -100,7 +100,7 @@ public class CatalogController {
      *
      * @return
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @PreAuthorize("authentication.name.equals(#username)")
     public ResponseEntity<Response> delete(String username, @PathVariable("id") Long id) {
         try {
@@ -120,7 +120,7 @@ public class CatalogController {
      * @param model
      * @return
      */
-    @GetMapping("/edit")
+    @GetMapping("edit")
     public String getCatalogEdit(Model model) {
         Catalog catalog = new Catalog(null, null);
         model.addAttribute("catalog", catalog);
@@ -134,7 +134,7 @@ public class CatalogController {
      * @param model
      * @return
      */
-    @GetMapping("/edit/{id}")
+    @GetMapping("edit/{id}")
     public String getCatalogById(@PathVariable("id") Long id, Model model) {
         Catalog catalog = catalogService.getCatalogById(id);
         model.addAttribute("catalog", catalog);
